@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% block style %}
+body
+{
+  background-color: #3CB371;
+}
+{% endblock %}
+
+{% block title %}
+    Notebook
+{% endblock %}
+
+{% block main %}
+    <div class="container mt-5 w-50">
+        <h1>My notes</h1>
+        {% for notebook in notebooks %}
+         <div class="alert alert-warning" role="alert">
+            <h2>{{ notebook["title"] }}</h2>
+            <p><b>{{ notebook["date"] }}</b></p>
+            <div class="btn-group">
+                <form action="/text" method="post">
+                    <input name="id" type="hidden" value="{{ notebook['id'] }}">
+                    <button type="submit" class="btn btn-info me-3" value="SEE">See</button><br>
+                </form>
+
+                <form action="/delete" method="post">
+                    <input name="id" type="hidden" value="{{ notebook['id'] }}">
+                    <button type="submit" class="btn btn btn-danger" value="Delete">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

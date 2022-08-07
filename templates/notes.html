@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% block style %}
+body
+{
+  background-color: #20B2AA;
+}
+{% endblock %}
+
+
+{% block title %}
+    Add friend
+{% endblock %}
+
+{% block main %}
+<div class="container mt-5 w-50">
+    <h1>Add notes</h1>
+    <form action="/notes" method="post">
+        <input type="text" id="title" name="title" class="form-control" placeholder="Title"><br>
+        <textarea name="text" class="form-control" placeholder="Text"></textarea><br>
+        <input type="submit" id="submit" class="btn btn-success" value="Add note" disabled>
+    </form>
+</div>
+<script>
+    document.querySelector('#title').onkeyup = function() {
+      if (document.querySelector('#title').value === ''){
+        document.querySelector('#submit').disabled = true;
+      } else {
+        document.querySelector('#submit').disabled = false;
+      }
+    }
+</script>
+{% endblock %}

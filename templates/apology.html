@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <!-- https://memegen.link/ -->
+    <img alt="{{ top }}" class="border img-fluid" src=" https://api.memegen.link/images/cbg/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?watermark=memecomplete.com&token=4lrjxeihtisnk93mm482" title="{{ top }}">
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+
+{% block style %}
+
+{% endblock %}
+
+
+{% block title %}
+    Friends
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Birth</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for friend in friends %}
+                <tr>
+                    <td>{{ friend["name"] }}</td>
+                    <td>{{ friend["birth"] }}</td>
+                    <td>{{ friend["phone"] }}</td>
+                    <td>{{ friend["email"] }}</td>
+                    <td>
+                        <form action="/edit" method="post">
+                            <input name="id" type="hidden" value="{{ friend['id'] }}">
+                            <input type="submit" class="btn btn-outline-info" value="EDIT">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/del" method="post">
+                            <input name="id" type="hidden" value="{{ friend['id'] }}">
+                            <input type="submit" class="btn btn-outline-danger" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

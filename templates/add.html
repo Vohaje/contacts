@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block style %}
+body
+{
+  background-color: #ADD8E6;
+}
+{% endblock %}
+
+{% block title %}
+    Add friend
+{% endblock %}
+
+{% block main %}
+  <form action="/add" method="post">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="center">Add your friend:</h1>
+            <label for="name" class="col-sm-3 col-form-label">Name</label>
+            <input class="form-control" id="name" name="name" placeholder="Name" type="text">
+            <label for="birth" class="col-sm-2 col-form-label">Birth</label>
+            <input class="form-control" name="birth" placeholder="Birth" type="text">
+            <label for="phone" class="col-sm-6 col-form-label">Phone Number</label>
+            <input class="form-control" name="phone" placeholder="Phone Number" type="number">
+            <label for="Email" class="col-sm-2 col-form-label">Email</label>
+            <input class="form-control" name="email" placeholder="Email" type="email">
+          </div>
+        </div>
+      </div>
+      <br>
+      <button class="btn btn-success" id="submit" type="submit" disabled>ADD</button>
+  </form>
+  <script>
+      document.querySelector('#name').onkeyup = function() {
+        if (document.querySelector('#name').value === ''){
+          document.querySelector('#submit').disabled = true;
+        } else {
+          document.querySelector('#submit').disabled = false;
+        }
+      }
+  </script>
+
+{% endblock %}
